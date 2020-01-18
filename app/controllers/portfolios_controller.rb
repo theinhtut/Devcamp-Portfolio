@@ -44,9 +44,13 @@ class PortfoliosController < ApplicationController
   end
 
   def destroy
+    # Perform the lookup
     @portfolio_item = Portfolio.find(params[:id])
 
+    # Destory/ delete the record
     @portfolio_item.destroy
+
+    # Redirect
     respond_to do |format|
       format.html { redirect_to portfolios_path, notick: 'Post was removed'}
     end
@@ -54,7 +58,11 @@ class PortfoliosController < ApplicationController
 
   private
   def portfolio_params
-    params.require(:portfolio).permit(:title, :subtitle, :body, technologies_attributes: [:name])
+    params.require(:portfolio).permit(:title,
+                                      :subtitle,
+                                      :body,
+                                      technologies_attributes: [:name]
+                                    )
   end
 
 end
