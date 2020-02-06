@@ -16,4 +16,10 @@ module ApplicationHelper
     end
   end
 
+  # before_action :set_copyright
+
+  def copyright_generator
+    @copyright = DevcampViewTool::Renderer.copyright 'Thein', 'All rights reserved'
+  end
+
 end
